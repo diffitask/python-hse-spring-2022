@@ -8,8 +8,7 @@ def main():
     ast_object = ast.parse(f.read())
 
     # create graph
-    ast_graph = AstGraph()
-    ast_graph.dfs_graph(ast_object)
+    ast_graph = AstGraph(ast_object)
     ast_graph.draw_graph()
 
 
