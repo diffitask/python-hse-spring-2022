@@ -1,26 +1,42 @@
-def latex_generator_table(in_file, out_file):
-    # to write a header of .tex file
-    file_header = open('artifacts/utility-files/table_file_header.txt', 'r')
-    out_file.write(file_header.read())
+from functools import reduce
 
-    # counts of lines and columns are written in the first line of input line
-    cnt_row, cnt_col = in_file.readline().split()
+
+def create_file_epilogue() -> str:
+    file_header = open('artifacts/utility-files/latex_file_header.txt', 'r')
+    return file_header.read()
+
+
+def create_table_header(in_file) -> str:
+    # counts of lines and columns are written in the first line of input file
+    _, cnt_col = in_file.readline().split()
     begin_table = '\\begin{tabular}{||' + int(cnt_col) * ' c |' + '|}\n'
+    return begin_table
 
-    out_file.write(begin_table)
 
-    # to write a table
-    lines = in_file.read().splitlines()
-    map = [line.split() for line in lines]
+def create_table_data(file_lines: list[str]) -> str:
+    table_lines = map(str.split, file_lines)
 
-    for line in map:
-        str = '\hline \n'
-        str += line[0]
-        for elem in line[1:]:
-            str += ' & ' + elem
+    table_lines_str = map(lambda line: '\\hline \n' + reduce(lambda ln, symb: ln + ' & ' + symb, line) + ' \\\\ \n', table_lines)
 
-        str += ' \\\\ \n'
-        out_file.write(str)
+    table_str = reduce(lambda string, line: string + line,
+                       table_lines_str)
+    return table_str
 
-    end_table = open('artifacts/utility-files/table_end_file.txt', 'r')
-    out_file.write(end_table.read())
+
+def create_table_prologue() -> str:
+    return '\\hline \n' + '\\end{tabular} \\\\ \n'
+
+
+def create_file_prologue() -> str:
+    return '\\end{document}'
+
+
+def latex_file_generator(in_file, out_file):
+    out_file.write(create_file_epilogue())
+    out_file.write(create_table_header(in_file))
+
+    file_lines = in_file.read().splitlines()
+    out_file.write(create_table_data(file_lines))
+
+    out_file.write(create_table_prologue())
+    out_file.write(create_file_prologue())

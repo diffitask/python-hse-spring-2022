@@ -1,10 +1,14 @@
-from latex_generator import latex_generator_table
+import os
+from latex_generator import latex_file_generator
 
 
 def main():
+    if not os.path.exists("artifacts"):
+        os.mkdir("artifacts")
+
     in_file = open('artifacts/input.txt', 'r')
-    out_file = open('artifacts/output.tex', 'w')
-    latex_generator_table(in_file, out_file)
+    out_file = open('artifacts/output.txt', 'w')
+    latex_file_generator(in_file, out_file)
 
 
 if __name__ == '__main__':
