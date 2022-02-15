@@ -16,7 +16,9 @@ def create_table_header(in_file) -> str:
 def create_table_data(file_lines: list[str]) -> str:
     table_lines = map(str.split, file_lines)
 
-    table_lines_str = map(lambda line: '\\hline \n' + reduce(lambda ln, symb: ln + ' & ' + symb, line) + ' \\\\ \n', table_lines)
+    table_lines_str = map(lambda line: '\\hline \n' +
+                                       reduce(lambda ln, symb: ln + ' & ' + symb, line) +
+                                       ' \\\\ \n', table_lines)
 
     table_str = reduce(lambda string, line: string + line,
                        table_lines_str)
