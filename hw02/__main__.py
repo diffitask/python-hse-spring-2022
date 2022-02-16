@@ -7,7 +7,7 @@ def main():
         os.mkdir("artifacts")
 
     in_file = open('artifacts/table_file.txt', 'r')
-    out_file = open('artifacts/output.txt', 'w')
+    out_file = open('artifacts/output.tex', 'w')
     latex_file_generator(in_file, out_file)
 
 

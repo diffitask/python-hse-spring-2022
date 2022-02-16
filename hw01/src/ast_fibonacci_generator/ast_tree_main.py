@@ -1,5 +1,5 @@
 import ast
-from ast_tree import AstGraph
+from ast_fibonacci_generator import ast_tree
 
 
 def main():
@@ -8,7 +8,7 @@ def main():
     ast_object = ast.parse(f.read())
 
     # create graph
-    ast_graph = AstGraph(ast_object)
+    ast_graph = ast_tree.AstGraph(ast_object)
     ast_graph.draw_graph()
 
 

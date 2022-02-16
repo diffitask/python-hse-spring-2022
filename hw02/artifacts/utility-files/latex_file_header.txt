@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage[english]{babel}
 \title{Cute message for today}
 \author{from Evgenia Fedotova}
