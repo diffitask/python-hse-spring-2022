@@ -21,10 +21,10 @@ def easy_test():
     write_matrix_to_file("artifacts/1-easy/matrix@.txt", m_matmul)
 
 def hard_test():
-    m_a = MatrixUser([[2, 1], [0, 1]])
-    m_c = MatrixUser([[0, 3], [1, 0]])
-    m_b = MatrixUser([[2, 1]])
-    m_d = MatrixUser([[2, 1]])
+    m_a = MatrixUser([[15, 1], [0, 1]])
+    m_c = MatrixUser([[7, 3], [8, 0]])
+    m_b = MatrixUser([[2, 6], [1, 5]])
+    m_d = MatrixUser([[2, 6], [1, 5]])
 
     write_matrix_to_file("artifacts/3-hard/A.txt", m_a)
     write_matrix_to_file("artifacts/3-hard/B.txt", m_b)
@@ -38,8 +38,8 @@ def hard_test():
     write_matrix_to_file("artifacts/3-hard/CD.txt", m_cd)
 
     with open("artifacts/3-hard/hash.txt", "w") as f:
-        f.write("Hash AB: " + str(m_ab.__hash__()) + "\n" +
-                "Hash CD: " + str(m_cd.__hash__()) + "\n")
+       f.write("Hash AB: " + str(m_ab.__hash__()) + "\n" +
+               "Hash CD: " + str(m_cd.__hash__()) + "\n")
 
 
 def main():

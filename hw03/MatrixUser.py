@@ -1,7 +1,7 @@
 class HashFuncMixin:
     def count_239_hash(self):
         # sum of 2 first elements of each row of matrix, and * 239
-        return (239 * sum(row[0] + row[1] for row in self._matrix))
+        return (239 * sum(row[0] * row[0] * row[0] for row in self._matrix))
 
 
 class MatrixUser(HashFuncMixin):
@@ -14,7 +14,7 @@ class MatrixUser(HashFuncMixin):
 
         for row in elements:
             # incorrect size of a given array
-            if len(row) != self._row_cnt:
+            if len(row) != self._col_cnt:
                 raise Exception("Wrong row size of a given data array\n")
             self._matrix.append(row)
 
@@ -59,7 +59,7 @@ class MatrixUser(HashFuncMixin):
 
     def __matmul__(self, other):
         self._check_types(other)
-        if self._row_cnt != other._col_cnt:
+        if self._col_cnt != other._row_cnt:
             raise Exception("Operation is impossible -- row count and column count are different:"
                             + str(self._row_cnt) + " versus " + str(other._col_cnt))
 
