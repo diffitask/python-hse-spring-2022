@@ -1,4 +1,12 @@
-class MatrixUser:
+class HashFuncMixin:
+    def count_239_hash(self):
+        # sum of 2 first elements of each row of matrix, and * 239
+        return (239 * sum(row[0] + row[1] for row in self._matrix))
+
+
+class MatrixUser(HashFuncMixin):
+    _cache_map = {}
+
     def __init__(self, elements):
         self._row_cnt = len(elements)
         self._col_cnt = len(elements[0])
@@ -9,6 +17,15 @@ class MatrixUser:
             if len(row) != self._row_cnt:
                 raise Exception("Wrong row size of a given data array\n")
             self._matrix.append(row)
+
+    def __str__(self) -> str:
+        s = ""
+        for row in self._matrix:
+            s += row.__str__() + "\n"
+        return s
+
+    def __hash__(self):
+        return self.count_239_hash()
 
     def _check_types(self, other):
         # checking the class of the other matrix
@@ -46,17 +63,15 @@ class MatrixUser:
             raise Exception("Operation is impossible -- row count and column count are different:"
                             + str(self._row_cnt) + " versus " + str(other._col_cnt))
 
-        res_matrix = [[0] * other._col_cnt for _ in range(self._row_cnt)]
-        for i in range(self._row_cnt):
-            for j in range(other._col_cnt):
-                    sum = 0
-                    for k in range(self._col_cnt):
-                        sum += self._matrix[i][k] * other._matrix[k][j]
-                    res_matrix[i][j] = sum
-        return MatrixUser(res_matrix)
-
-    def __str__(self) -> str:
-        s = ""
-        for row in self._matrix:
-            s += row.__str__() + "\n"
-        return s
+        key_pair = (self.__hash__(), other.__hash__())
+        # checking if the cache_map has already that key pair
+        if key_pair not in self._cache_map:
+            res_matrix = [[0] * other._col_cnt for _ in range(self._row_cnt)]
+            for i in range(self._row_cnt):
+                for j in range(other._col_cnt):
+                        sum = 0
+                        for k in range(self._col_cnt):
+                            sum += self._matrix[i][k] * other._matrix[k][j]
+                        res_matrix[i][j] = sum
+            self._cache_map[key_pair] = MatrixUser(res_matrix)
+        return self._cache_map[key_pair]
