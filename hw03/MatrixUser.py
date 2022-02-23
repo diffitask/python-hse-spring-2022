@@ -29,18 +29,16 @@ class MatrixUser:
     def __add__(self, other):
         self._check_types(other)
         self._check_sizes(other)
-        self._matrix = [self._matrix[i][j] + other._matrix[i][j]
-                        for i in range(self._row_cnt)
-                        for j in range(self._col_cnt)]
-        return self._matrix
+        return MatrixUser([[self._matrix[i][j] + other._matrix[i][j]
+                        for i in range(self._row_cnt)]
+                        for j in range(self._col_cnt)])
 
     def __mul__(self, other):
         self._check_types(other)
         self._check_sizes(other)
-        self._matrix = [self._matrix[i][j] * other._matrix[i][j]
-                        for i in range(self._row_cnt)
-                        for j in range(self._col_cnt)]
-        return self._matrix
+        return MatrixUser([[self._matrix[i][j] * other._matrix[i][j]
+                        for i in range(self._row_cnt)]
+                        for j in range(self._col_cnt)])
 
     def __matmul__(self, other):
         self._check_types(other)
@@ -48,11 +46,17 @@ class MatrixUser:
             raise Exception("Operation is impossible -- row count and column count are different:"
                             + str(self._row_cnt) + " versus " + str(other._col_cnt))
 
-        res_matrix = [[]]
+        res_matrix = [[0] * other._col_cnt for _ in range(self._row_cnt)]
         for i in range(self._row_cnt):
             for j in range(other._col_cnt):
                     sum = 0
                     for k in range(self._col_cnt):
                         sum += self._matrix[i][k] * other._matrix[k][j]
                     res_matrix[i][j] = sum
-        return res_matrix
+        return MatrixUser(res_matrix)
+
+    def __str__(self) -> str:
+        s = ""
+        for row in self._matrix:
+            s += row.__str__() + "\n"
+        return s
