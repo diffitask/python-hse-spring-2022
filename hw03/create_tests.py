@@ -1,11 +1,14 @@
 import numpy as np
 import numpy.random
 
-from MatrixUser import MatrixUser as MatrixUser
+from MatrixUser import MatrixUser
+from MatrixNumpy import MatrixNumpy
 
-def write_matrix_to_file(file, matrix: MatrixUser):
+
+def write_matrix_to_file(file, matrix):
     with open(file, "w") as f:
         f.write(matrix.__str__())
+
 
 def easy_test():
     numpy.random.seed(0)
@@ -19,6 +22,20 @@ def easy_test():
     write_matrix_to_file("artifacts/1-easy/matrix+.txt", m_add)
     write_matrix_to_file("artifacts/1-easy/matrix*.txt", m_mul)
     write_matrix_to_file("artifacts/1-easy/matrix@.txt", m_matmul)
+
+def medium_test():
+    numpy.random.seed(0)
+    m1 = MatrixNumpy(np.random.randint(0, 10, (10, 10)))
+    m2 = MatrixNumpy(np.random.randint(0, 10, (10, 10)))
+
+    m_add = m1 + m2
+    m_mul = m1 * m2
+    m_matmul = m1 @ m2
+
+    write_matrix_to_file("artifacts/2-medium/matrix+.txt", m_add)
+    write_matrix_to_file("artifacts/2-medium/matrix*.txt", m_mul)
+    write_matrix_to_file("artifacts/2-medium/matrix@.txt", m_matmul)
+
 
 def hard_test():
     m_a = MatrixUser([[15, 1], [0, 1]])
@@ -44,7 +61,9 @@ def hard_test():
 
 def main():
     easy_test()
+    medium_test()
     hard_test()
+
 
 if __name__ == '__main__':
     main()

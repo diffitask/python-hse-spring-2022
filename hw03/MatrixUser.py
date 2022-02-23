@@ -1,7 +1,7 @@
 class HashFuncMixin:
     def count_239_hash(self):
-        # sum of 2 first elements of each row of matrix, and * 239
-        return (239 * sum(row[0] * row[0] * row[0] for row in self._matrix))
+        # sum of 3rd deg of the first elements of each row, and * 239
+        return 239 * sum(row[0] * row[0] * row[0] for row in self._matrix)
 
 
 class MatrixUser(HashFuncMixin):
@@ -47,15 +47,15 @@ class MatrixUser(HashFuncMixin):
         self._check_types(other)
         self._check_sizes(other)
         return MatrixUser([[self._matrix[i][j] + other._matrix[i][j]
-                        for i in range(self._row_cnt)]
-                        for j in range(self._col_cnt)])
+                        for j in range(self._row_cnt)]
+                        for i in range(self._col_cnt)])
 
     def __mul__(self, other):
         self._check_types(other)
         self._check_sizes(other)
         return MatrixUser([[self._matrix[i][j] * other._matrix[i][j]
-                        for i in range(self._row_cnt)]
-                        for j in range(self._col_cnt)])
+                        for j in range(self._row_cnt)]
+                        for i in range(self._col_cnt)])
 
     def __matmul__(self, other):
         self._check_types(other)
