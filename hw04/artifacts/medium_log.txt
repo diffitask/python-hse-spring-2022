@@ -1,0 +1,31 @@
+Running integrate iterations
+
+Calculating integral from 0 to 1.5707963267948966, 1 job(s) and 2000000 iterations
+
+Integrating section from 0 to 1.5707963267948966
+
+Calculating integral from 0 to 1.5707963267948966, 2 job(s) and 2000000 iterations
+
+Integrating section from 0 to 0.7853981633974483
+
+Integrating section from 0.7853981633974483 to 1.5707963267948966
+
+Calculating integral from 0 to 1.5707963267948966, 3 job(s) and 2000000 iterations
+
+Integrating section from 0 to 0.5235987755982988
+
+Integrating section from 0.5235987755982988 to 1.0471975511965976
+
+Integrating section from 1.0471975511965976 to 1.5707963267948966
+
+Calculating integral from 0 to 1.5707963267948966, 4 job(s) and 2000000 iterations
+
+Integrating section from 0 to 0.39269908169872414
+
+Integrating section from 0.39269908169872414 to 0.7853981633974483
+
+Integrating section from 0.7853981633974483 to 1.1780972450961724
+
+Integrating section from 1.1780972450961724 to 1.5707963267948966
+
+Function works are finished
