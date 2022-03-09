@@ -46,7 +46,7 @@ def integrate(f, a, b, *, n_jobs=1, n_iter=10_000):
 def run_integrate_funcs():
     print("Running integrate iterations\n")
 
-    f = functools.partial(integrate, math.cos, 0, math.pi / 2, n_iter=2_000_000)
+    f = functools.partial(integrate, math.cos, 0, math.pi / 2, n_iter=20_000)
     working_times = []
 
     cpu_num = 2
