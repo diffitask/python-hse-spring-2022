@@ -11,8 +11,8 @@ def synchronous_regime(n):
     for i in range(3):
         fibonacci(n)
 
-    end_time = time.time() - start_time
-    return end_time
+    delta_time = time.time() - start_time
+    return delta_time
 
 
 def run_multithreading(elements):
@@ -23,8 +23,8 @@ def run_multithreading(elements):
     for elem in elements:
         elem.join()
 
-    end_time = time.time() - start_time
-    return end_time
+    delta_time = time.time() - start_time
+    return delta_time
 
 
 def threads_regime(n):
