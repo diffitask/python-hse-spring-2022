@@ -16,21 +16,18 @@ async def files_downloader(site, download_directory, image_cnt):
             start_time = time.time()
 
             async with session.get(site) as response:
-                # write to file
+                # writing to file
                 file_path = f"{download_directory}/image{img_num}.png"
                 async with aiofiles.open(file_path, 'bw') as file:
                     await file.write(await response.content.read())
                     # logging
-                    log_file.write(f"Image №{img_num} was downloading from {start_time}s to {time.time()}s "
-                                   f"--> delta = {time.time() - start_time}s\n")
+                    log_file.write(f"Image №{img_num} was downloading for {time.time() - start_time}s\n")
                 time.sleep(2)
 
 
 def main():
-    #download_directory = sys.argv[0]  # --> "../artifacts/easy"
-    #image_cnt = sys.argv[1]  # --> 10
-    download_directory = "../artifacts/easy"
-    image_cnt = 10
+    download_directory = "../artifacts/easy"  # sys.argv[0]
+    image_cnt = 10                            # sys.argv[1]
 
     site = "https://thiscatdoesnotexist.com/"
 

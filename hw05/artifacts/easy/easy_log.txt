@@ -1,10 +1,10 @@
-Image №0 was downloading from 1647451491.555938s to 1647451491.710478s --> delta = 0.1545419692993164s
-Image №1 was downloading from 1647451493.715839s to 1647451493.819577s --> delta = 0.10373926162719727s
-Image №2 was downloading from 1647451495.821326s to 1647451495.897548s --> delta = 0.07622408866882324s
-Image №3 was downloading from 1647451497.8990378s to 1647451497.992192s --> delta = 0.09315609931945801s
-Image №4 was downloading from 1647451499.993301s to 1647451500.05458s --> delta = 0.061280012130737305s
-Image №5 was downloading from 1647451502.059447s to 1647451502.141288s --> delta = 0.08184814453125s
-Image №6 was downloading from 1647451504.146604s to 1647451504.193562s --> delta = 0.046959877014160156s
-Image №7 was downloading from 1647451506.1975539s to 1647451506.292057s --> delta = 0.09450435638427734s
-Image №8 was downloading from 1647451508.2949178s to 1647451508.367724s --> delta = 0.07280826568603516s
-Image №9 was downloading from 1647451510.372958s to 1647451510.4949949s --> delta = 0.1220390796661377s
+Image №0 was downloading for 0.3423449993133545s
+Image №1 was downloading for 1.5549230575561523s
+Image №2 was downloading for 0.0947868824005127s
+Image №3 was downloading for 0.19879412651062012s
+Image №4 was downloading for 0.11978507041931152s
+Image №5 was downloading for 0.1375417709350586s
+Image №6 was downloading for 0.258026123046875s
+Image №7 was downloading for 0.07328605651855469s
+Image №8 was downloading for 0.08617019653320312s
+Image №9 was downloading for 0.0772402286529541s
